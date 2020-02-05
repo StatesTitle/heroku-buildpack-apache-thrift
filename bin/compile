@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Installs apache thrift
+# following directions from here:
+# https://thrift.apache.org/docs/BuildingFromSource
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Unpacking tarball"
+
+tar xfvz thrift-0.13.0.tar.gz | indent
+
+echo "-----> Running ./configure"
+
+./configure --without-java | indent
+
+echo "-----> Running make"
+
+make | indent
+
+echo "-----> Running make install"
+
+make install | indent
+
+echo "-----> Testing for thrift binary"
+
+if command -v thrift; then
+  echo "-----> Success!!"
+else
+  echo "-----> FAILED"
+fi

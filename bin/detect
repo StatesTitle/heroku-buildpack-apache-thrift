@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# always returns 0 because if you include this buildpack
+# you are getting apache thrift, sorry (not really)
+
+echo "Apache Thrift compiler version v0.13.0"
+exit 0
