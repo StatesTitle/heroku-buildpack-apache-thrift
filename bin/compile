@@ -12,6 +12,10 @@ echo "-----> Unpacking tarball"
 
 tar xfvz thrift-0.13.0.tar.gz | indent
 
+echo "-----> cd thrift-0.13.0"
+
+cd thrift-0.13.0 
+
 echo "-----> Running ./configure"
 
 ./configure --without-java | indent
