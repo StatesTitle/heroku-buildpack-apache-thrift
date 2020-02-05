@@ -9,3 +9,4 @@ This buildpack aims to provide a more up-to-date version of
 the thrift compiler by building the binary from source and
 providing this for the app slug.
 
+The thrift binary built ONLY TARGETS Python 3!
