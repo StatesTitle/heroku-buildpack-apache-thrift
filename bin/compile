@@ -32,10 +32,10 @@ echo "-----> Unzipping thrift-0.13.0"
 
 gunzip thrift.gz
 
-echo "-----> Copying to /app/vendor/bin"
+echo "-----> Copying to ${HOME}/vendor/bin"
 
-mkdir -p /app/vendor/bin
-cp thrift /app/vendor/bin/thrift
+mkdir -p ${HOME}/vendor/bin
+cp thrift ${HOME}/vendor/bin/thrift
 
 echo "-----> Adding $PATH to the profile"
 
