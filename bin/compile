@@ -18,7 +18,7 @@ cd thrift-0.13.0
 
 echo "-----> Running ./configure"
 
-./configure --without-as3 --without-cpp --without-qt5 --without-c_glib --without-csharp --without-java  --without-erlang --without-nodejs --without-nodets --without-lua --without-python --without-perl --without-php --without-php_extension  --without-dart --without-ruby --without-haskell --without-go --without-swift --without-rs --without-cl --without-haxe --without-dotnetcore --without-d --prefix=$HOME/vendor/bin | indent
+./configure --without-as3 --without-cpp --without-qt5 --without-c_glib --without-csharp --without-java  --without-erlang --without-nodejs --without-nodets --without-lua --without-python --without-perl --without-php --without-php_extension  --without-dart --without-ruby --without-haskell --without-go --without-swift --without-rs --without-cl --without-haxe --without-dotnetcore --without-d --prefix=$HOME/vendor | indent
 
 echo "-----> Running make"
 
@@ -27,6 +27,12 @@ make | indent
 echo "-----> Running make install"
 
 make install | indent
+
+echo "-----> Adding $PATH to the profile"
+
+PROFILE_PATH="$1/.profile.d/apache-thrift.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:${HOME}/vendor/bin"' >> $PROFILE_PATH
 
 echo "-----> Testing for thrift binary"
 
