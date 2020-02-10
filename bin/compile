@@ -8,25 +8,34 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Unpacking tarball"
+# echo "-----> Unpacking tarball"
 
-tar xfz thrift-0.13.0.tar.gz | indent
+# tar xfz thrift-0.13.0.tar.gz | indent
 
-echo "-----> cd thrift-0.13.0"
+# echo "-----> cd thrift-0.13.0"
 
-cd thrift-0.13.0 
+# cd thrift-0.13.0 
 
-echo "-----> Running ./configure"
+# echo "-----> Running ./configure"
 
-./configure --without-as3 --without-cpp --without-qt5 --without-c_glib --without-csharp --without-java  --without-erlang --without-nodejs --without-nodets --without-lua --without-python --without-perl --without-php --without-php_extension  --without-dart --without-ruby --without-haskell --without-go --without-swift --without-rs --without-cl --without-haxe --without-dotnetcore --without-d --prefix=$HOME/vendor | indent
+# ./configure --without-as3 --without-cpp --without-qt5 --without-c_glib --without-csharp --without-java  --without-erlang --without-nodejs --without-nodets --without-lua --without-python --without-perl --without-php --without-php_extension  --without-dart --without-ruby --without-haskell --without-go --without-swift --without-rs --without-cl --without-haxe --without-dotnetcore --without-d --prefix=$HOME/vendor | indent
 
-echo "-----> Running make"
+# echo "-----> Running make"
 
-make | indent
+# make | indent
 
-echo "-----> Running make install"
+# echo "-----> Running make install"
 
-make install | indent
+# make install | indent
+
+echo "-----> Unzipping thrift-0.13.0"
+
+gunzip thrift.gz
+
+echo "-----> Copying to /app/vendor/bin"
+
+mkdir -p /app/vendor/bin
+cp thrift /app/vendor/bin/thrift
 
 echo "-----> Adding $PATH to the profile"
 
