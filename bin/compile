@@ -28,16 +28,20 @@ indent() {
 
 # make install | indent
 
+if test -f "thrift.gz"; then
+    echo "exist"
+fi
+
 echo "-----> Unzipping thrift-0.13.0"
 
-gunzip thrift.gz
+gunzip thrift.gz | indent
 
 echo "-----> Copying to ${HOME}/vendor/bin"
 
 mkdir -p ${HOME}/vendor/bin
 cp thrift ${HOME}/vendor/bin/thrift
 
-echo "-----> Adding $PATH to the profile"
+echo '-----> Adding $PATH to the profile'
 
 PROFILE_PATH="$1/.profile.d/apache-thrift.sh"
 mkdir -p $(dirname $PROFILE_PATH)
