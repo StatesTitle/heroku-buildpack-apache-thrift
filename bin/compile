@@ -8,52 +8,14 @@ indent() {
   sed -u 's/^/       /'
 }
 
-# echo "-----> Unpacking tarball"
-
-# tar xfz thrift-0.13.0.tar.gz | indent
-
-# echo "-----> cd thrift-0.13.0"
-
-# cd thrift-0.13.0 
-
-# echo "-----> Running ./configure"
-
-# ./configure --without-as3 --without-cpp --without-qt5 --without-c_glib --without-csharp --without-java  --without-erlang --without-nodejs --without-nodets --without-lua --without-python --without-perl --without-php --without-php_extension  --without-dart --without-ruby --without-haskell --without-go --without-swift --without-rs --without-cl --without-haxe --without-dotnetcore --without-d --prefix=$HOME/vendor | indent
-
-# echo "-----> Running make"
-
-# make | indent
-
-# echo "-----> Running make install"
-
-# make install | indent
-
-if test -f "thrift.gz"; then
-    echo "exist"
-else
-	echo "NOT EXISTSS"
-fi
-
 echo "-----> Unzipping thrift-0.13.0"
 
 gunzip thrift.gz | indent
-
-if test -f "thrift"; then
-    echo "exist"
-else
-	echo "NOT EXISTS"
-fi
 
 echo "-----> Copying to ${HOME}/vendor/bin"
 
 mkdir -p ${HOME}/vendor/bin
 cp thrift ${HOME}/vendor/bin/thrift
-
-if test -f "${HOME}/vendor/bin/thrift"; then
-    echo "exist"
-else
-	echo "NOT EXIST"
-fi
 
 chmod +x "${HOME}/vendor/bin/thrift"
 
@@ -64,11 +26,3 @@ echo '-----> Adding $PATH to the profile'
 PROFILE_PATH="$1/.profile.d/apache-thrift.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:${HOME}/vendor/bin"' >> $PROFILE_PATH
-
-echo "-----> Testing for thrift binary"
-
-if command -v thrift; then
-  echo "-----> Success!!"
-else
-  echo "-----> FAILED"
-fi
