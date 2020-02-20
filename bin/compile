@@ -8,6 +8,8 @@ indent() {
   sed -u 's/^/       /'
 }
 
+BP_DIR=$(cd $(dirname $0); cd ..; pwd)
+
 echo "-----> Unzipping thrift-0.13.0"
 
 gunzip thrift.gz | indent
@@ -23,7 +25,7 @@ $HOME/vendor/bin/thrift -version | indent
 
 echo '-----> Adding vendor/bin to $PATH for future buildpacks'
 
-export PATH="$PATH:${HOME}/vendor/bin"
+echo "export PATH=\"${HOME}/vendor/bin:\$PATH\"" > $BP_DIR/export
 
 echo '-----> Adding $PATH to the profile'
 
