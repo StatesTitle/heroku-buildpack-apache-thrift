@@ -21,6 +21,10 @@ chmod +x "${HOME}/vendor/bin/thrift"
 
 $HOME/vendor/bin/thrift -version | indent
 
+echo '-----> Adding vendor/bin to $PATH for future buildpacks'
+
+export PATH="$PATH:${HOME}/vendor/bin"
+
 echo '-----> Adding $PATH to the profile'
 
 PROFILE_PATH="$1/.profile.d/apache-thrift.sh"
