@@ -35,7 +35,7 @@ echo 'export PATH="$PATH:${HOME}/vendor/bin"' >> $PROFILE_PATH
 
 
 if [ -e $THRIFT_BUILD_SCRIPT ]; then
-  echo '-----> Running script at $THRIFT_BUILD_SCRIPT'
+  echo "-----> Running script at $THRIFT_BUILD_SCRIPT"
   $THRIFT_BUILD_SCRIPT $THRIFT_BUILD_ARGUMENTS
 else
   echo '-----> Nothing specified for THRIFT_BUILD_SCRIPT'
