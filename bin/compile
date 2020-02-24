@@ -8,6 +8,7 @@ indent() {
   sed -u 's/^/       /'
 }
 
+BUILD_DIR=$1
 BP_DIR=$(cd $(dirname $0); cd ..; pwd)
 
 echo "-----> Unzipping thrift-0.13.0"
@@ -36,7 +37,7 @@ echo 'export PATH="$PATH:${HOME}/vendor/bin"' >> $PROFILE_PATH
 
 if [ -e $THRIFT_BUILD_SCRIPT ]; then
   echo "-----> Running script at $THRIFT_BUILD_SCRIPT"
-  $THRIFT_BUILD_SCRIPT $THRIFT_BUILD_ARGUMENTS
+  $BUILD_DIR/$THRIFT_BUILD_SCRIPT $THRIFT_BUILD_ARGUMENTS
 else
   echo '-----> Nothing specified for THRIFT_BUILD_SCRIPT'
 fi
