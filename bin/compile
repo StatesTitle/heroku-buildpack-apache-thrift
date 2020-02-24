@@ -38,6 +38,7 @@ PROFILE_PATH="$1/.profile.d/apache-thrift.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:${HOME}/vendor/bin"' >> $PROFILE_PATH
 
+export PATH="$PATH:${HOME}/vendor/bin"
 
 if [ -f $BUILD_DIR/$THRIFT_BUILD_SCRIPT ]; then
   echo "-----> Running script at $THRIFT_BUILD_SCRIPT"
