@@ -9,7 +9,11 @@ indent() {
 }
 
 BUILD_DIR=$1
+ENV_DIR=$3
 BP_DIR=$(cd $(dirname $0); cd ..; pwd)
+
+THRIFT_BUILD_SCRIPT=$(cat "${ENV_DIR}/THRIFT_BUILD_SCRIPT")
+THRIFT_BUILD_ARGUMENTS=$(cat "${ENV_DIR}/THRIFT_BUILD_ARGUMENTS")
 
 echo "-----> Unzipping thrift-0.13.0"
 
@@ -35,7 +39,7 @@ mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:${HOME}/vendor/bin"' >> $PROFILE_PATH
 
 
-if [ -e $THRIFT_BUILD_SCRIPT ]; then
+if [ -f $BUILD_DIR/$THRIFT_BUILD_SCRIPT ]; then
   echo "-----> Running script at $THRIFT_BUILD_SCRIPT"
   $BUILD_DIR/$THRIFT_BUILD_SCRIPT $THRIFT_BUILD_ARGUMENTS
 else
